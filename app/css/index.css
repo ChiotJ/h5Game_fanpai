@@ -8,14 +8,23 @@ body, button, input, select, textarea, h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-    background: url("../imgs/bg.png") repeat;
+    background: #08315E;
 }
 
 .pageHome {
     overflow: hidden;
+    position: relative;
 }
 
 .pageHome .background_img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.startGame, .rules, .prize, .ranking {
+    position: absolute;
 }
 
 
