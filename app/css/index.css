@@ -15,6 +15,14 @@ body {
     position: absolute;
 }
 
+.blackMate {
+    background: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 13;
+}
+
 #bgm {
     display: none;
 }
@@ -67,5 +75,96 @@ body {
 .pageHome .main .detail {
     transition: opacity 0.5s;
     opacity: 0;
+}
+
+.pageGame .card {
+    float: left;
+    position: relative;
+    border: 2px solid transparent;
+    overflow: hidden;
+}
+
+.pageGame .card .face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition-property: opacty, transform, box-shadow;
+    transition-duration: .5s;
+    backface-visibility: hidden;
+    border-radius: 10px;
+}
+
+.pageGame .card .front {
+    z-index: 10
+}
+
+.pageGame .card .back {
+    transform: rotate3d(0, 1, 0, -180deg);
+    z-index: 8;
+}
+
+.pageGame .card-flipped .front {
+    transform: rotate3d(0, 1, 0, 180deg);
+    z-index: 8;
+}
+
+.pageGame .card-flipped .back {
+    transform: rotate3d(0, 1, 0, 0deg);
+    z-index: 10;
+}
+
+.pageGame .card-removed .front {
+    transform: rotate3d(0, 1, 0, 180deg);
+    z-index: 8;
+}
+
+.pageGame .card-removed .back {
+    transform: rotate3d(0, 1, 0, 0deg);
+    z-index: 10;
+}
+
+.pageGame .card-removed {
+    border-radius: 12px;
+    border-color: #2AFF00;
+}
+
+.pageGame .card-flipped.card-flipped-error {
+    border-radius: 12px;
+    border-color: #FF6666;
+}
+
+.pageGame .finish {
+    position: absolute;
+    z-index: 1;
+    color: #FFFFFF;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.pageGame .finish .finish_bg {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.pageGame .finish .title {
+    text-align: center;
+    overflow: hidden;
+}
+
+.pageGame .finish .finish_input {
+    border-radius: 10px;
+    background-color: #E3FFFF;
+}
+
+.pageGame .finish .finish_input input {
+    border: none;
+    background-color: #E3FFFF;
+    outline: none;
+}
+
+.pageGame .finish .finish_submit {
+    display: block;
 }
 

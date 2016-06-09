@@ -30,6 +30,7 @@
 <body ng-controller="ApplicationController">
 <audio id="bgm" src="imgs/bgm.mp3" autoplay loop></audio>
 <img src="imgs/musicOpen.png" alt="" ng-style="musicIO" class="musicIO" bgm-audio>
+<div class="blackMate" ng-style="blackMate" ng-show="isShowBlackMate"></div>
 <div ui-view class="page {{ pageClass }}" ng-style="page"></div>
 
 </body>

@@ -18,6 +18,10 @@ angular.module("app")
                 top: 50 * pageInfo.rate + "px",
                 right: 20 * pageInfo.rate + "px"
             };
+            $scope.blackMate = {
+                width: pageInfo.width + "px",
+                height: pageInfo.height + "px",
+            };
         }
 
         autoCss();
@@ -25,6 +29,12 @@ angular.module("app")
             autoCss();
         });
 
+        $scope.isShowBlackMate = false;
+
+        $scope.$on('isShowBlackMate', function (e, flag) {
+            $log.debug(flag)
+            $scope.isShowBlackMate = flag;
+        })
     }])
     .controller('homeCtrl', ['$scope', '$timeout', '$state', '$log', 'pageInfo', function ($scope, $timeout, $state, $log, pageInfo) {
         $scope.pageClass = 'pageHome';
@@ -165,7 +175,7 @@ angular.module("app")
 
         NProgress.done();
     }])
-    .controller('gameCtrl', ['$scope', '$state', '$log', 'pageInfo', function ($scope, $state, $log, pageInfo) {
+    .controller('gameCtrl', ['$scope', '$state', '$log', 'pageInfo', 'gameService', function ($scope, $state, $log, pageInfo, gameService) {
         $scope.pageClass = 'pageGame';
         function autoCss() {
             $scope.game_bg = {
@@ -202,7 +212,101 @@ angular.module("app")
                 top: 913 * pageInfo.rate + "px",
                 left: 338 * pageInfo.rate + "px"
             };
+
+            $scope.card = {
+                width: 126 * pageInfo.rate + "px",
+                height: 66 * pageInfo.rate + "px",
+                marginTop: 20 * pageInfo.rate + "px",
+                marginLeft: 12 * pageInfo.rate + "px"
+            };
+
+            $scope.face = {
+                width: 126 * pageInfo.rate + "px",
+                height: 66 * pageInfo.rate + "px"
+            };
+
+            $scope.finish = {
+                width: 477 * pageInfo.rate + "px",
+                height: 768 * pageInfo.rate + "px",
+                top: 25 * pageInfo.rate + "px",
+                left: 82 * pageInfo.rate + "px"
+            };
+
+
+            $scope.finish_close = {
+                width: 67 * pageInfo.rate + "px",
+                height: 67 * pageInfo.rate + "px",
+                top: 140 * pageInfo.rate + "px",
+                right: -20 * pageInfo.rate + "px"
+            };
+
+            $scope.finish_main = {
+                width: 448 * pageInfo.rate + "px",
+                height: 576 * pageInfo.rate + "px",
+                top: 176 * pageInfo.rate + "px",
+                left: 14 * pageInfo.rate + "px"
+            };
+
+            $scope.finish_title = {
+                width: 448 * pageInfo.rate + "px",
+                height: 80 * pageInfo.rate + "px",
+                lineHeight: 80 * pageInfo.rate + "px",
+                fontSize: 60 * pageInfo.rate + "px",
+                marginTop: 50 * pageInfo.rate + "px"
+            };
+
+            $scope.finish_time = {
+                width: 448 * pageInfo.rate + "px",
+                height: 45 * pageInfo.rate + "px",
+                lineHeight: 45 * pageInfo.rate + "px",
+                fontSize: 34 * pageInfo.rate + "px",
+                marginTop: 40 * pageInfo.rate + "px",
+                letterSpacing: 10 * pageInfo.rate + "px"
+            };
+
+            $scope.finish_input_div = {
+                width: 400 * pageInfo.rate + "px",
+                height: 60 * pageInfo.rate + "px",
+                marginTop: 40 * pageInfo.rate + "px",
+                marginLeft: 16 * pageInfo.rate + "px",
+                border: 4 * pageInfo.rate + "px solid transparent"
+            };
+
+            $scope.finish_input = {
+                width: 360 * pageInfo.rate + "px",
+                height: 40 * pageInfo.rate + "px",
+                lineHeight: 40 * pageInfo.rate + "px",
+                fontSize: 20 * pageInfo.rate + "px",
+                marginTop: 10 * pageInfo.rate + "px",
+                marginLeft: 20 * pageInfo.rate + "px"
+            };
+
+            $scope.finish_submit = {
+                width: 271 * pageInfo.rate + "px",
+                height: 87 * pageInfo.rate + "px",
+                margin: 60 * pageInfo.rate + "px auto 0"
+            };
+
+
+            $scope.finish_cheat_title = {
+                width: 448 * pageInfo.rate + "px",
+                height: 45 * pageInfo.rate + "px",
+                lineHeight: 45 * pageInfo.rate + "px",
+                fontSize: 40 * pageInfo.rate + "px",
+                marginTop: 30 * pageInfo.rate + "px"
+            };
+
+            $scope.finish_cheat_time = {
+                width: 448 * pageInfo.rate + "px",
+                height: 45 * pageInfo.rate + "px",
+                lineHeight: 45 * pageInfo.rate + "px",
+                fontSize: 40 * pageInfo.rate + "px",
+                marginTop: 120 * pageInfo.rate + "px",
+                marginBottom: 60 * pageInfo.rate + "px",
+                letterSpacing: 10 * pageInfo.rate + "px"
+            };
         }
+
 
         autoCss();
         $scope.$on('autoCss', function () {
@@ -213,6 +317,45 @@ angular.module("app")
             $state.go('home');
         };
 
+        gameService.init();
 
+        $scope.cards = gameService.cards;
+
+        $scope.reInit = function () {
+            $scope.cards = gameService.cards;
+            $scope.$apply();
+        };
+
+
+        $scope.gameTime = 0;
+        $scope.username = '';
+        $scope.phone = '';
+
+
+        $scope.finishCloseClick = function () {
+            $scope.$emit('isShowBlackMate', false);
+            $(".finish").css('opacity', 0).css('z-index', '');
+            //gameService.reInit()
+        };
+
+        $scope.finishSubmitClick = function () {
+            $log.debug($scope.username, $scope.phone)
+            if ($scope.username.trim().length == 0) {
+                $($('.finish_input')[0]).css('border-color', '#FF6666');
+                return;
+            }
+
+            if ($scope.phone.length != 11) {
+                $($('.finish_input')[1]).css('border-color', '#FF6666');
+                return;
+            }
+
+            $scope.$emit('isShowBlackMate', false);
+            $(".finish").css('opacity', 0).css('z-index', '');
+            gameService.submit($scope.username, $scope.phone);
+            //gameService.reInit()
+        };
         NProgress.done();
-    }]);
+    }
+
+    ]);

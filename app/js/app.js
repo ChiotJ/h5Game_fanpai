@@ -10,7 +10,7 @@ app.config(['$logProvider', function ($logProvider) {
 }]);
 
 
-app.run(['$window', '$rootScope', 'pageInfo', function ($window, $rootScope, pageInfo) {
+app.run(['$window', '$rootScope', 'pageInfo', 'gameService', function ($window, $rootScope, pageInfo, gameService) {
     function autoCss() {
         pageInfo.init();
         $rootScope.$broadcast('autoCss');
