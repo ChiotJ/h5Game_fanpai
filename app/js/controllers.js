@@ -28,7 +28,7 @@ app.controller('ApplicationController', ['$scope', '$window', '$log', 'pageInfo'
 }]);
 
 
-app.controller('homeCtrl', ['$scope', '$log', 'pageInfo', function ($scope, $log, pageInfo) {
+app.controller('homeCtrl', ['$scope', '$timeout', '$log', 'pageInfo', function ($scope, $timeout, $log, pageInfo) {
     $scope.pageClass = 'pageHome';
 
     function autoCss() {
@@ -71,12 +71,95 @@ app.controller('homeCtrl', ['$scope', '$log', 'pageInfo', function ($scope, $log
             margin: 105 * pageInfo.rate + "px auto 0"
         };
 
+
+        $scope.detail = {
+            width: pageInfo.width + "px",
+            height: 720 * pageInfo.rate + "px",
+            top: 190 * pageInfo.rate + "px"
+        };
+
+        $scope.prizeDetail = {
+            width: pageInfo.width + "px",
+            height: 713 * pageInfo.rate + "px"
+        };
+
+        $scope.prizeClose = {
+            width: 51 * pageInfo.rate + "px",
+            height: 51 * pageInfo.rate + "px",
+            top: 30 * pageInfo.rate + "px",
+            right: 18 * pageInfo.rate + "px"
+
+        };
+
+        $scope.rulesDetail = {
+            width: 618 * pageInfo.rate + "px",
+            height: 696 * pageInfo.rate + "px",
+            left: 11 * pageInfo.rate + "px"
+        };
+
+        $scope.rulesClose = {
+            width: 54 * pageInfo.rate + "px",
+            height: 60 * pageInfo.rate + "px",
+            right: 13 * pageInfo.rate + "px",
+            top: 21 * pageInfo.rate + "px"
+        };
+
+        $scope.rankingDetail = {
+            width: 618 * pageInfo.rate + "px",
+            height: 696 * pageInfo.rate + "px",
+            left: 11 * pageInfo.rate + "px"
+        };
+
+        $scope.rankingClose = {
+            width: 51 * pageInfo.rate + "px",
+            height: 51 * pageInfo.rate + "px",
+            right: 17 * pageInfo.rate + "px",
+            top: 31 * pageInfo.rate + "px"
+        };
+
     }
 
     autoCss();
     $scope.$on('autoCss', function () {
         autoCss();
     });
+
+
+    $scope.prizeOpenClick = function () {
+        $('#prizeDetail').css('opacity', '1').css('z-index', '2')
+    };
+
+    $scope.prizeCloseClick = function () {
+        var $prizeDetail = $('#prizeDetail');
+        $prizeDetail.css('opacity', '0');
+        $timeout(function () {
+            $prizeDetail.css('z-index', '')
+        }, 500);
+    };
+
+    $scope.rulesOpenClick = function () {
+        $('#rulesDetail').css('opacity', '1').css('z-index', '2')
+    };
+
+    $scope.rulesCloseClick = function () {
+        var $rulesDetail = $('#rulesDetail');
+        $rulesDetail.css('opacity', '0');
+        $timeout(function () {
+            $rulesDetail.css('z-index', '')
+        }, 500);
+    };
+
+    $scope.rankingOpenClick = function () {
+        $('#rankingDetail').css('opacity', '1').css('z-index', '2')
+    };
+
+    $scope.rankingCloseClick = function () {
+        var $rankingDetail = $('#rankingDetail');
+        $rankingDetail.css('opacity', '0');
+        $timeout(function () {
+            $rankingDetail.css('z-index', '')
+        }, 500);
+    };
 
     NProgress.done();
 }]);

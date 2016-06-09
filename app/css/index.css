@@ -11,7 +11,7 @@ body {
     background: #08315E;
 }
 
-#bgm{
+#bgm {
     display: none;
 }
 
@@ -41,6 +41,8 @@ body {
 
 .startGame, .rules, .prize, .ranking {
     display: block;
+    position: relative;
+    z-index: 1;
 }
 
 .rules, .prize, .ranking {
@@ -51,5 +53,14 @@ body {
     color: #FFFFFF;
     text-align: center;
     overflow: hidden;
+}
+
+.detail, .prizeDetail, .prizeClose, .rulesDetail, .rulesClose, .rankingDetail, .rankingClose {
+    position: absolute;
+}
+
+.detail {
+    transition: opacity 0.5s;
+    opacity: 0;
 }
 

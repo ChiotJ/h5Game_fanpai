@@ -25,7 +25,6 @@ angular.module("app")
                 new Image().src = attrs.src.replace("Open", "Close");
 
                 var audio = document.getElementById('bgm');
-
                 element.on('click', function (e) {
                     if (audio.paused) {
                         audio.play();

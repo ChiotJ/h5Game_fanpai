@@ -3,12 +3,34 @@
 
 <div ng-style="main" class="main">
     <img src="imgs/home/startGame1.png" alt="" ng-style="startGame" class="startGame" img-button>
-    <img src="imgs/home/rules1.png" alt="" ng-style="rules" class="rules" img-button>
-    <img src="imgs/home/prize1.png" alt="" ng-style="prize" class="prize" img-button>
-    <img src="imgs/home/ranking1.png" alt="" ng-style="ranking" class="ranking" img-button>
+    <img src="imgs/home/rules1.png" alt="" ng-style="rules" class="rules" img-button
+         ng-click="rulesOpenClick()">
+    <img src="imgs/home/prize1.png" alt="" ng-style="prize" class="prize" img-button
+         ng-click="prizeOpenClick()">
+    <img src="imgs/home/ranking1.png" alt="" ng-style="ranking" class="ranking" img-button
+         ng-click="rankingOpenClick()">
 
     <div ng-style="notice" class="notice">
         郑州华润万象城室内外三屏联播
         邀您共享赛事！
+    </div>
+
+
+    <div ng-style="detail" class="detail" id="prizeDetail">
+        <img src="imgs/home/prizeDetail.png" alt="" class="prizeDetail" ng-style="prizeDetail">
+        <img src="imgs/home/prizeClose.png" alt="" class="prizeClose" ng-style="prizeClose"
+             ng-click="prizeCloseClick()">
+    </div>
+
+    <div ng-style="detail" class="detail" id="rulesDetail">
+        <img src="imgs/home/rulesDetail.png" alt="" class="rulesDetail" ng-style="rulesDetail">
+        <img src="imgs/home/rulesClose.png" alt="" class="rulesClose" ng-style="rulesClose"
+             ng-click="rulesCloseClick()">
+    </div>
+
+    <div ng-style="detail" class="detail" id="rankingDetail">
+        <img src="imgs/home/rankingDetail.png" alt="" class="rankingDetail" ng-style="rankingDetail">
+        <img src="imgs/home/rankingClose.png" alt="" class="rankingClose" ng-style="rankingClose"
+             ng-click="rankingCloseClick()">
     </div>
 </div>
