@@ -13,7 +13,6 @@ body {
 
 .page {
     position: relative;
-    transition: all 1s;
 }
 
 .absolute {
@@ -46,7 +45,7 @@ body {
 
 .musicIO {
     position: absolute;
-    z-index: 2;
+    z-index: 999;
 }
 
 .pageHome .main {
@@ -78,7 +77,8 @@ body {
 }
 
 .pageHome .main .detail {
-    transition: opacity 0.5s;
+    transition: opacity 0.3s;
+    display: none;
     opacity: 0;
 }
 
@@ -173,11 +173,13 @@ body {
 .pageGame #rememberTime {
     transition: opacity 0.3s;
     opacity: 1;
+    display: none;
 }
 
 .pageGame #gameRecordTime {
     transition: opacity 0.3s;
     opacity: 0;
+    display: none;
 }
 
 .pageGame .finish {
@@ -186,6 +188,7 @@ body {
     color: #FFFFFF;
     opacity: 0;
     transition: opacity 0.5s;
+    display: none;
 }
 
 .pageGame .finish .finish_bg {

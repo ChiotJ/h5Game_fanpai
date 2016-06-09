@@ -23,4 +23,6 @@ app.run(['$window', '$rootScope', 'pageInfo', 'gameService', function ($window, 
         document.getElementById('bgm').play();
         $('body').unbind('touchstart')
     });
+
+
 }]);

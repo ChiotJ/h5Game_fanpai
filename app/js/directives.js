@@ -82,7 +82,7 @@ angular.module("app")
             scope: {},
             link: function (scope, element, attrs) {
                 element.on('click', function (e) {
-                    if ($(".card-flipped").size() > 1 || !gameService.isStart) {
+                    if ($(".card-flipped").size() > 1 || !gameService.isStart()) {
                         return;
                     }
                     element.addClass("card-flipped");

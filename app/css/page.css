@@ -136,16 +136,15 @@
     }
 }
 
-
-.ng-enter {
+/*.ng-enter {
     animation: scaleUp 0.5s both ease-in;
-    z-index: 8888;
+    z-index: 88;
 }
 
 .ng-leave {
     animation: slideOutLeft 0.5s both ease-in;
-    z-index: 9999;
-}
+    z-index: 99;
+}*/
 
 /*.page.ng-enter {
     animation: slideInRight 0.5s both ease-in;

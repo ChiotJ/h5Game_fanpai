@@ -154,9 +154,11 @@ angular.module("app")
 
 
             $scope.rankingContent_name = {
-                width: 105 * pageInfo.rate + "px",
+                width: 90 * pageInfo.rate + "px",
                 height: 40 * pageInfo.rate + "px",
-                lineHeight: 40 * pageInfo.rate + "px"
+                lineHeight: 40 * pageInfo.rate + "px",
+                marginLeft: 15 * pageInfo.rate + "px",
+                textAlign: 'left'
             };
 
             $scope.rankingContent_time = {
@@ -190,6 +192,10 @@ angular.module("app")
                 });
             }
 
+
+            $timeout(function () {
+                $('.detail').show();
+            })
         }
 
         var rules_iscroll, ranking_iscroll;
@@ -250,7 +256,7 @@ angular.module("app")
 
         NProgress.done();
     }])
-    .controller('gameCtrl', ['$scope', '$state', '$log', 'pageInfo', 'gameService', function ($scope, $state, $log, pageInfo, gameService) {
+    .controller('gameCtrl', ['$scope', '$state', '$timeout', '$log', 'pageInfo', 'gameService', function ($scope, $state, $timeout, $log, pageInfo, gameService) {
         $scope.pageClass = 'pageGame';
         function autoCss() {
             $scope.game_bg = {
@@ -443,6 +449,13 @@ angular.module("app")
                 marginBottom: 60 * pageInfo.rate + "px",
                 letterSpacing: 10 * pageInfo.rate + "px"
             };
+
+            $timeout(function () {
+                $('.finish').show();
+                $('#rememberTime ').show();
+                $('#gameRecordTime').show();
+            })
+
         }
 
 
@@ -476,12 +489,18 @@ angular.module("app")
 
 
         $scope.finishCloseClick = function () {
+            if (!gameService.isOver()) {
+                return;
+            }
             $scope.$emit('isShowBlackMate', false);
             $(".finish").css('opacity', 0).css('z-index', '');
             $('#startAndRestart').click();
         };
 
         $scope.finishSubmitClick = function () {
+            if (!gameService.isOver()) {
+                return;
+            }
             $log.debug($scope.username, $scope.phone)
             if ($scope.username.trim().length == 0) {
                 $($('.finish_input')[0]).css('border-color', '#FF6666');
