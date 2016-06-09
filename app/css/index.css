@@ -11,6 +11,11 @@ body {
     background: #08315E;
 }
 
+.page {
+    position: relative;
+    transition: all 1s;
+}
+
 .absolute {
     position: absolute;
 }
@@ -91,6 +96,7 @@ body {
     float: left;
     color: #C1CD87;
     text-align: center;
+    overflow: hidden;
 }
 
 .pageGame .card {

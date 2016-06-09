@@ -136,7 +136,6 @@
     }
 }
 
-/*
 
 .ng-enter {
     animation: scaleUp 0.5s both ease-in;
@@ -148,15 +147,15 @@
     z-index: 9999;
 }
 
-.page.ng-enter {
+/*.page.ng-enter {
     animation: slideInRight 0.5s both ease-in;
 }
 
 .page-about.ng-leave {
     animation: slideOutLeft 0.5s both ease-in;
-}
-*/
+}*/
 
+/*
 .ng-enter {
     transform: translateX(100%);
     z-index: 8888;
@@ -173,4 +172,4 @@
 
 .ng-leave-active {
     transform: translateX(-100%);
-}
+}*/

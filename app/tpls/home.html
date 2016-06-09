@@ -40,10 +40,10 @@
         <div id="rankingContent" ng-style="rankingContent">
             <div>
                 <div ng-repeat="one in rankingList">
-                    <div ng-style="rankingContent_index">{{one.index}}</div>
-                    <div ng-style="rankingContent_name">{{one.name}}</div>
-                    <div ng-style="rankingContent_time">{{one.time}}秒</div>
-                    <div ng-style="rankingContent_phone">{{one.phone}}</div>
+                    <div ng-style="rankingContent_index">{{$index+1}}</div>
+                    <div ng-style="rankingContent_name">{{one.name | name}}</div>
+                    <div ng-style="rankingContent_time">{{one.time | time}}秒</div>
+                    <div ng-style="rankingContent_phone">{{one.phone | phone}}</div>
                 </div>
             </div>
         </div>

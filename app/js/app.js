@@ -1,8 +1,7 @@
 'use strict'
 var app = angular.module('app', [
     'ngAnimate',
-    'ui.router',
-    'ngTouch'
+    'ui.router'
 ]);
 
 app.config(['$logProvider', function ($logProvider) {

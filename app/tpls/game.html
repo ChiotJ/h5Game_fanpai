@@ -2,7 +2,7 @@
 <img src="imgs/game/game_bg.png" alt="" class="absolute" ng-style="game_bg">
 <img src="imgs/game/feiren.png" alt="" class="absolute" ng-style="feiren">
 <img src="imgs/game/home1.png" alt="" class="absolute" ng-style="home" img-button ng-click="backHomeClick()">
-<img src="imgs/game/start1.png" alt="" class="absolute" ng-style="start" start-game data-status="start">
+<img src="imgs/game/start1.png" alt="" class="absolute" ng-style="start" start-game data-status="start" id="startAndRestart">
 <div id="cards" class="absolute" ng-style="gameDiv">
     <div class="card" ng-style="card" ng-repeat="one in cards track by $index" data-pattern="{{one}}" game-card>
         <img src="imgs/game/flag.png" class="face front" ng-style="face">

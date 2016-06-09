@@ -154,19 +154,19 @@ angular.module("app")
 
 
             $scope.rankingContent_name = {
-                width: 60 * pageInfo.rate + "px",
+                width: 105 * pageInfo.rate + "px",
                 height: 40 * pageInfo.rate + "px",
                 lineHeight: 40 * pageInfo.rate + "px"
             };
 
             $scope.rankingContent_time = {
-                width: 170 * pageInfo.rate + "px",
+                width: 135 * pageInfo.rate + "px",
                 height: 40 * pageInfo.rate + "px",
                 lineHeight: 40 * pageInfo.rate + "px"
             };
 
             $scope.rankingContent_phone = {
-                width: 200 * pageInfo.rate + "px",
+                width: 190 * pageInfo.rate + "px",
                 height: 40 * pageInfo.rate + "px",
                 lineHeight: 40 * pageInfo.rate + "px"
             };
@@ -470,10 +470,15 @@ angular.module("app")
         $scope.phone = '';
 
 
+        $scope.$on('updateGameTime', function (e, time) {
+            $scope.gameTime = time;
+        });
+
+
         $scope.finishCloseClick = function () {
             $scope.$emit('isShowBlackMate', false);
             $(".finish").css('opacity', 0).css('z-index', '');
-            gameService.reInit()
+            $('#startAndRestart').click();
         };
 
         $scope.finishSubmitClick = function () {
@@ -491,7 +496,7 @@ angular.module("app")
             $scope.$emit('isShowBlackMate', false);
             $(".finish").css('opacity', 0).css('z-index', '');
             gameService.submit($scope.username, $scope.phone);
-            gameService.reInit()
+            $('#startAndRestart').click();
         };
         NProgress.done();
     }

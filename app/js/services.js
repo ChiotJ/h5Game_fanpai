@@ -48,8 +48,8 @@ angular.module("app")
         }
 
         function gameOver() {
-            $log.debug('gameOver');
             $rootScope.$broadcast('isShowBlackMate', true);
+            $rootScope.$broadcast('updateGameTime', (gameTime / 1000).toFixed(1));
             if (gameTime < 8400) {
                 $("#finish_cheat").css('opacity', 1).css('z-index', 15);
             } else {
@@ -71,6 +71,7 @@ angular.module("app")
             ],
             cards: [],
             init: function init() {
+                getStartTime();
                 this.country.sort(shuffle);
                 var c = this.country.slice(0, 12);
                 c = c.concat(c);
@@ -122,6 +123,7 @@ angular.module("app")
                     $(".card-flipped").addClass("card-removed").removeClass("card-flipped");
                     if ($(".card-removed").length == this.cards.length) {
                         this.isStart = false;
+                        $interval.cancel(this.gameTimeInterval);
                         gameOver();
                     }
                 } else {
@@ -144,7 +146,7 @@ angular.module("app")
                 })
             },
             getRankingList: function () {
-                return $http.get('/game/rankingList', {
+                return $http.get('/game/getGameRecord', {
                     params: {
                         size: 30
                     }
