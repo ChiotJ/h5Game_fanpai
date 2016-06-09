@@ -23,5 +23,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             controller: 'homeCtrl',
             controllerAs: 'home'
         })
+        .state('game', {
+            url: '/game',
+            templateUrl: 'tpls/game.html',
+            controller: 'gameCtrl',
+            controllerAs: 'game'
+        })
 
 }]);

@@ -1,8 +1,8 @@
 <img src="imgs/home/bg.png" alt="" ng-style="background_img" class="background_img">
-<img src="imgs/musicOpen.png" alt="" ng-style="musicIO" class="musicIO" bgm-audio>
 
 <div ng-style="main" class="main">
-    <img src="imgs/home/startGame1.png" alt="" ng-style="startGame" class="startGame" img-button>
+    <img src="imgs/home/startGame1.png" alt="" ng-style="startGame" class="startGame" img-button
+         ng-click="startGameClick()">
     <img src="imgs/home/rules1.png" alt="" ng-style="rules" class="rules" img-button
          ng-click="rulesOpenClick()">
     <img src="imgs/home/prize1.png" alt="" ng-style="prize" class="prize" img-button
@@ -16,21 +16,21 @@
     </div>
 
 
-    <div ng-style="detail" class="detail" id="prizeDetail">
-        <img src="imgs/home/prizeDetail.png" alt="" class="prizeDetail" ng-style="prizeDetail">
-        <img src="imgs/home/prizeClose.png" alt="" class="prizeClose" ng-style="prizeClose"
+    <div ng-style="detail" class="detail absolute" id="prizeDetail">
+        <img src="imgs/home/prizeDetail.png" alt="" class="absolute" ng-style="prizeDetail">
+        <img src="imgs/home/prizeClose.png" alt="" class="absolute" ng-style="prizeClose"
              ng-click="prizeCloseClick()">
     </div>
 
-    <div ng-style="detail" class="detail" id="rulesDetail">
-        <img src="imgs/home/rulesDetail.png" alt="" class="rulesDetail" ng-style="rulesDetail">
-        <img src="imgs/home/rulesClose.png" alt="" class="rulesClose" ng-style="rulesClose"
+    <div ng-style="detail" class="detail absolute" id="rulesDetail">
+        <img src="imgs/home/rulesDetail.png" alt="" class="absolute" ng-style="rulesDetail">
+        <img src="imgs/home/rulesClose.png" alt="" class="absolute" ng-style="rulesClose"
              ng-click="rulesCloseClick()">
     </div>
 
-    <div ng-style="detail" class="detail" id="rankingDetail">
-        <img src="imgs/home/rankingDetail.png" alt="" class="rankingDetail" ng-style="rankingDetail">
-        <img src="imgs/home/rankingClose.png" alt="" class="rankingClose" ng-style="rankingClose"
+    <div ng-style="detail" class="detail absolute" id="rankingDetail">
+        <img src="imgs/home/rankingDetail.png" alt="" class="absolute" ng-style="rankingDetail">
+        <img src="imgs/home/rankingClose.png" alt="" class="absolute" ng-style="rankingClose"
              ng-click="rankingCloseClick()">
     </div>
 </div>

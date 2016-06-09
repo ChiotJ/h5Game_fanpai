@@ -11,6 +11,10 @@ body {
     background: #08315E;
 }
 
+.absolute {
+    position: absolute;
+}
+
 #bgm {
     display: none;
 }
@@ -20,7 +24,7 @@ body {
     position: relative;
 }
 
-.pageHome .background_img {
+.background_img {
     position: absolute;
     top: 0;
     left: 0;
@@ -32,34 +36,35 @@ body {
     z-index: 2;
 }
 
-.main {
+.pageHome .main {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
 }
 
-.startGame, .rules, .prize, .ranking {
+.pageHome .main .startGame,
+.pageHome .main .rules,
+.pageHome .main .prize,
+.pageHome .main .ranking {
     display: block;
     position: relative;
     z-index: 1;
 }
 
-.rules, .prize, .ranking {
+.pageHome .main .rules,
+.pageHome .main .prize,
+.pageHome .main .ranking {
     float: left;
 }
 
-.notice {
+.pageHome .main .notice {
     color: #FFFFFF;
     text-align: center;
     overflow: hidden;
 }
 
-.detail, .prizeDetail, .prizeClose, .rulesDetail, .rulesClose, .rankingDetail, .rankingClose {
-    position: absolute;
-}
-
-.detail {
+.pageHome .main .detail {
     transition: opacity 0.5s;
     opacity: 0;
 }
