@@ -125,7 +125,31 @@ angular.module("app")
                 top: 31 * pageInfo.rate + "px"
             };
 
+            $scope.rulesContent = {
+                width: 580 * pageInfo.rate + "px",
+                height: 560 * pageInfo.rate + "px",
+                left: 40 * pageInfo.rate + "px",
+                top: 110 * pageInfo.rate + "px"
+            };
+
+            $scope.rulesContentImg = {
+                width: 455 * pageInfo.rate + "px"
+            };
+
+
+            if (rules_iscroll) {
+                rules_iscroll.refresh();
+            } else {
+                rules_iscroll = new IScroll('#rulesContent', {
+                    snap: true,
+                    scrollbars: true
+                });
+            }
+
         }
+
+        var rules_iscroll;
+
 
         autoCss();
         $scope.$on('autoCss', function () {
@@ -146,6 +170,7 @@ angular.module("app")
         };
 
         $scope.rulesOpenClick = function () {
+            rules_iscroll.refresh();
             $('#rulesDetail').css('opacity', '1').css('z-index', '2')
         };
 

@@ -77,6 +77,16 @@ body {
     opacity: 0;
 }
 
+.pageHome .main #rulesContent {
+    position: absolute;
+    overflow: hidden;
+}
+
+.pageHome .main #rulesContent img {
+    display: block;
+    margin: 0 auto;
+}
+
 .pageGame .card {
     float: left;
     position: relative;
