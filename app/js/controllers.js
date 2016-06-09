@@ -225,6 +225,69 @@ angular.module("app")
                 height: 66 * pageInfo.rate + "px"
             };
 
+            $scope.rememberTime = {
+                width: 580 * pageInfo.rate + "px",
+                height: 28 * pageInfo.rate + "px",
+                top: 802 * pageInfo.rate + "px",
+                left: 30 * pageInfo.rate + "px"
+            };
+
+            $scope.rememberTimeNum = {
+                width: 70 * pageInfo.rate + "px",
+                height: 20 * pageInfo.rate + "px",
+                lineHeight: 20 * pageInfo.rate + "px",
+                borderRadius: 10 * pageInfo.rate + "px",
+                border: 1 * pageInfo.rate + "px solid #E98E10",
+                fontSize: 14 * pageInfo.rate + "px",
+                top: 2 * pageInfo.rate + "px",
+                left: 10 * pageInfo.rate + "px"
+            };
+
+
+            $scope.gameRecordTime = {
+                width: 580 * pageInfo.rate + "px",
+                height: 28 * pageInfo.rate + "px",
+                top: 802 * pageInfo.rate + "px",
+                left: 30 * pageInfo.rate + "px"
+            };
+
+
+            $scope.gameRecordTimeStr = {
+                width: 90 * pageInfo.rate + "px",
+                height: 20 * pageInfo.rate + "px",
+                lineHeight: 20 * pageInfo.rate + "px",
+                borderRadius: 10 * pageInfo.rate + "px",
+                border: 1 * pageInfo.rate + "px solid #E98E10",
+                fontSize: 12 * pageInfo.rate + "px",
+                top: 2 * pageInfo.rate + "px",
+                left: 10 * pageInfo.rate + "px"
+            };
+
+
+            $scope.gameRecordTimeNum = {
+                width: 120 * pageInfo.rate + "px",
+                height: 20 * pageInfo.rate + "px",
+                lineHeight: 20 * pageInfo.rate + "px",
+                borderRadius: 10 * pageInfo.rate + "px",
+                border: 1 * pageInfo.rate + "px solid #E98E10",
+                fontSize: 14 * pageInfo.rate + "px",
+                top: 2 * pageInfo.rate + "px",
+                left: 110 * pageInfo.rate + "px",
+                letterSpacing: 3 * pageInfo.rate + "px"
+            };
+
+            $scope.gameRecordTimeStrMiao = {
+                width: 40 * pageInfo.rate + "px",
+                height: 20 * pageInfo.rate + "px",
+                lineHeight: 20 * pageInfo.rate + "px",
+                borderRadius: 10 * pageInfo.rate + "px",
+                border: 1 * pageInfo.rate + "px solid #E98E10",
+                fontSize: 12 * pageInfo.rate + "px",
+                top: 2 * pageInfo.rate + "px",
+                left: 225 * pageInfo.rate + "px",
+            };
+
+
             $scope.finish = {
                 width: 477 * pageInfo.rate + "px",
                 height: 768 * pageInfo.rate + "px",
@@ -335,7 +398,7 @@ angular.module("app")
         $scope.finishCloseClick = function () {
             $scope.$emit('isShowBlackMate', false);
             $(".finish").css('opacity', 0).css('z-index', '');
-            //gameService.reInit()
+            gameService.reInit()
         };
 
         $scope.finishSubmitClick = function () {
@@ -353,7 +416,7 @@ angular.module("app")
             $scope.$emit('isShowBlackMate', false);
             $(".finish").css('opacity', 0).css('z-index', '');
             gameService.submit($scope.username, $scope.phone);
-            //gameService.reInit()
+            gameService.reInit()
         };
         NProgress.done();
     }

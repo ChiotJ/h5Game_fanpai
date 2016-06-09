@@ -27,8 +27,8 @@ angular.module("app")
             }
         }
     }])
-    .factory('gameService', ['$timeout', '$rootScope', '$http', '$log', function ($timeout, $rootScope, $http, $log) {
-        var gameTime = 22220, rememberTime = 10000;
+    .factory('gameService', ['$timeout', '$interval', '$rootScope', '$http', '$log', function ($timeout, $interval, $rootScope, $http, $log) {
+        var gameTime = 0, rememberTime = 10000;
 
         function shuffle() {
             return 0.5 - Math.random();
@@ -44,7 +44,7 @@ angular.module("app")
         function gameOver() {
             $log.debug('gameOver');
             $rootScope.$broadcast('isShowBlackMate', true);
-            if (gameTime < 5000) {
+            if (gameTime < 8400) {
                 $("#finish_cheat").css('opacity', 1).css('z-index', 15);
             } else {
                 $("#finish").css('opacity', 1).css('z-index', 15);
@@ -55,7 +55,8 @@ angular.module("app")
             isStart: false,
             gameTime: gameTime,
             rememberTime: rememberTime,
-            rememberTimeout: null,
+            rememberInterval: null,
+            gameTimeInterval: null,
             country: [
                 'England', 'Italy', 'Hungary', 'Spain', 'Ukraine', 'Welsh',
                 'Turkey', 'Slovakia', 'Switzerland', 'Sweden', 'Portugal', 'Romania',
@@ -78,18 +79,37 @@ angular.module("app")
                 $(".card-flipped").removeClass('card-flipped');
                 $(".card-removed").removeClass('card-removed');
                 this.init();
-                $timeout.cancel(this.rememberTimeout);
-
-                gameOver();
+                $interval.cancel(this.rememberInterval);
+                $interval.cancel(this.gameTimeInterval);
+                rememberTime = 10000;
+                gameTime = 0;
+                $('#rememberTime').css('opacity', '1').find('.rememberTimeNum').html(rememberTime / 1000);
+                $('#gameRecordTime').css('opacity', '0').find('.rememberTimeNum').html(gameTime.toFixed(1));
             },
             remember: function () {
                 $('#cards').addClass('card-flipped');
                 var self = this;
-                this.rememberTimeout = $timeout(function () {
-                    $('#cards').removeClass('card-flipped');
-                    self.isStart = true;
-                    self.rememberTimeout = null;
-                }, 2000);
+
+                this.rememberInterval = $interval(function () {
+                    if (rememberTime > 0) {
+                        rememberTime -= 1000;
+                        $('#rememberTime').find('.rememberTimeNum').html(rememberTime / 1000);
+                    } else {
+                        $('#cards').removeClass('card-flipped');
+                        self.isStart = true;
+                        self.rememberTimeout = null;
+                        $('#rememberTime').css('opacity', '0');
+                        $('#gameRecordTime').css('opacity', '1');
+                        $interval.cancel(self.rememberInterval);
+
+
+                        self.gameTimeInterval = $interval(function () {
+                            gameTime += 100;
+                            var str = gameTime / 1000;
+                            $('#gameRecordTime').find('.rememberTimeNum').html(str.toFixed(1));
+                        }, 100);
+                    }
+                }, 1000);
             },
             checkPattern: function () {
                 if (isMatchPattern()) {

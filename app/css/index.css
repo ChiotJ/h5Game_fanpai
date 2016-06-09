@@ -133,6 +133,31 @@ body {
     border-color: #FF6666;
 }
 
+.pageGame .rememberTimeNum {
+    background-color: #FCD009;
+    position: absolute;
+    text-align: center;
+    color: #5f5f5f;
+    overflow: hidden;
+}
+
+.pageGame .rememberTimeStr {
+    background-color: #FCF903;
+    position: absolute;
+    text-align: center;
+    color: #5f5f5f;
+}
+
+.pageGame #rememberTime {
+    transition: opacity 0.3s;
+    opacity: 1;
+}
+
+.pageGame #gameRecordTime {
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
 .pageGame .finish {
     position: absolute;
     z-index: 1;
