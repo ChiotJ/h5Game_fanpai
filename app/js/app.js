@@ -19,4 +19,9 @@ app.run(['$window', '$rootScope', 'pageInfo', function ($window, $rootScope, pag
 
     $window.onresize = autoCss;
     $window.onload = autoCss;
+
+    $('body').bind('touchstart', function (e) {
+        document.getElementById('bgm').play();
+        $('body').unbind('touchstart')
+    });
 }]);

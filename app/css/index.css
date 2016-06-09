@@ -11,6 +11,10 @@ body {
     background: #08315E;
 }
 
+#bgm{
+    display: none;
+}
+
 .pageHome {
     overflow: hidden;
     position: relative;
@@ -23,8 +27,29 @@ body {
     width: 100%;
 }
 
-.startGame, .rules, .prize, .ranking {
+.musicIO {
     position: absolute;
+    z-index: 2;
 }
 
+.main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.startGame, .rules, .prize, .ranking {
+    display: block;
+}
+
+.rules, .prize, .ranking {
+    float: left;
+}
+
+.notice {
+    color: #FFFFFF;
+    text-align: center;
+    overflow: hidden;
+}
 
