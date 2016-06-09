@@ -28,7 +28,13 @@ angular.module("app")
         }
     }])
     .factory('gameService', ['$timeout', '$interval', '$rootScope', '$http', '$log', function ($timeout, $interval, $rootScope, $http, $log) {
-        var gameTime = 0, rememberTime = 10000;
+        var gameTime = 0, rememberTime = 10000, startTime = 0;
+
+        function getStartTime() {
+            $http.get('/game/getTime').success(function (data) {
+                startTime = data.result;
+            })
+        }
 
         function shuffle() {
             return 0.5 - Math.random();
@@ -126,8 +132,22 @@ angular.module("app")
                 }
             },
             submit: function (username, phone) {
-                return $http.post('', null, {
-                    params: {}
+                return $http.post('/game/save', null, {
+                    params: {
+                        name: username,
+                        phone: phone,
+                        time: gameTime
+                    },
+                    headers: {
+                        "start-time": startTime
+                    }
+                })
+            },
+            getRankingList: function () {
+                return $http.get('/game/rankingList', {
+                    params: {
+                        size: 30
+                    }
                 })
             }
         }

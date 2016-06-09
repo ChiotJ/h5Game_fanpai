@@ -37,5 +37,15 @@
         <img src="imgs/home/rankingDetail.png" alt="" class="absolute" ng-style="rankingDetail">
         <img src="imgs/home/rankingClose.png" alt="" class="absolute" ng-style="rankingClose"
              ng-click="rankingCloseClick()">
+        <div id="rankingContent" ng-style="rankingContent">
+            <div>
+                <div ng-repeat="one in rankingList">
+                    <div ng-style="rankingContent_index">{{one.index}}</div>
+                    <div ng-style="rankingContent_name">{{one.name}}</div>
+                    <div ng-style="rankingContent_time">{{one.time}}秒</div>
+                    <div ng-style="rankingContent_phone">{{one.phone}}</div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

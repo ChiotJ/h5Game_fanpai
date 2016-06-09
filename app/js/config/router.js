@@ -21,7 +21,12 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/home',
             templateUrl: 'tpls/home.html',
             controller: 'homeCtrl',
-            controllerAs: 'home'
+            controllerAs: 'home',
+            resolve: {
+                getRankingList: ['gameService', function (gameService) {
+                    return gameService.getRankingList();
+                }]
+            }
         })
         .state('game', {
             url: '/game',

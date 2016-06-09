@@ -36,7 +36,7 @@ angular.module("app")
             $scope.isShowBlackMate = flag;
         })
     }])
-    .controller('homeCtrl', ['$scope', '$timeout', '$state', '$log', 'pageInfo', function ($scope, $timeout, $state, $log, pageInfo) {
+    .controller('homeCtrl', ['$scope', '$timeout', '$state', '$log', 'pageInfo', 'getRankingList', function ($scope, $timeout, $state, $log, pageInfo, getRankingList) {
         $scope.pageClass = 'pageHome';
 
         function autoCss() {
@@ -137,6 +137,41 @@ angular.module("app")
             };
 
 
+            $scope.rankingContent = {
+                width: 480 * pageInfo.rate + "px",
+                height: 560 * pageInfo.rate + "px",
+                left: 90 * pageInfo.rate + "px",
+                top: 110 * pageInfo.rate + "px",
+                fontSize: 24 * pageInfo.rate + "px"
+            };
+
+
+            $scope.rankingContent_index = {
+                width: 50 * pageInfo.rate + "px",
+                height: 40 * pageInfo.rate + "px",
+                lineHeight: 40 * pageInfo.rate + "px"
+            };
+
+
+            $scope.rankingContent_name = {
+                width: 60 * pageInfo.rate + "px",
+                height: 40 * pageInfo.rate + "px",
+                lineHeight: 40 * pageInfo.rate + "px"
+            };
+
+            $scope.rankingContent_time = {
+                width: 170 * pageInfo.rate + "px",
+                height: 40 * pageInfo.rate + "px",
+                lineHeight: 40 * pageInfo.rate + "px"
+            };
+
+            $scope.rankingContent_phone = {
+                width: 200 * pageInfo.rate + "px",
+                height: 40 * pageInfo.rate + "px",
+                lineHeight: 40 * pageInfo.rate + "px"
+            };
+
+
             if (rules_iscroll) {
                 rules_iscroll.refresh();
             } else {
@@ -146,9 +181,18 @@ angular.module("app")
                 });
             }
 
+            if (ranking_iscroll) {
+                ranking_iscroll.refresh();
+            } else {
+                ranking_iscroll = new IScroll('#rankingContent', {
+                    snap: true,
+                    scrollbars: true
+                });
+            }
+
         }
 
-        var rules_iscroll;
+        var rules_iscroll, ranking_iscroll;
 
 
         autoCss();
@@ -183,6 +227,7 @@ angular.module("app")
         };
 
         $scope.rankingOpenClick = function () {
+            ranking_iscroll.refresh();
             $('#rankingDetail').css('opacity', '1').css('z-index', '2')
         };
 
@@ -197,6 +242,11 @@ angular.module("app")
         $scope.startGameClick = function () {
             $state.go('game');
         };
+
+
+        if (getRankingList.status == "200" && getRankingList.data && getRankingList.data.success) {
+            $scope.rankingList = getRankingList.data.result;
+        }
 
         NProgress.done();
     }])
