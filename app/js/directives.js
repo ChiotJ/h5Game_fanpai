@@ -82,14 +82,14 @@ angular.module("app")
             scope: {},
             link: function (scope, element, attrs) {
                 element.on('click', function (e) {
-                    if ($(".card-flipped").size() > 1 || !gameService.isStart()) {
+                    if ($(".card-flipped").size() > 1 || !gameService.isStart()||element.hasClass('card-removed')) {
                         return;
                     }
                     element.addClass("card-flipped");
                     if ($(".card-flipped").size() == 2) {
                         $timeout(function () {
                             gameService.checkPattern();
-                        }, 700);
+                        }, 400);
                     }
                 });
             }

@@ -36,7 +36,7 @@ angular.module("app")
             $scope.isShowBlackMate = flag;
         })
     }])
-    .controller('homeCtrl', ['$scope', '$timeout', '$state', '$log', 'pageInfo', 'getRankingList', function ($scope, $timeout, $state, $log, pageInfo, getRankingList) {
+    .controller('homeCtrl', ['$scope', '$timeout', '$state', '$log', 'pageInfo', 'gameService', function ($scope, $timeout, $state, $log, pageInfo, gameService) {
         $scope.pageClass = 'pageHome';
 
         function autoCss() {
@@ -250,9 +250,11 @@ angular.module("app")
         };
 
 
-        if (getRankingList.status == "200" && getRankingList.data && getRankingList.data.success) {
-            $scope.rankingList = getRankingList.data.result;
-        }
+        gameService.getRankingList().success(function (data) {
+            if (data.success)
+                $scope.rankingList = data.result;
+        });
+
 
         NProgress.done();
     }])
@@ -468,7 +470,7 @@ angular.module("app")
             $state.go('home');
         };
 
-        gameService.init();
+        gameService.reInit();
 
         $scope.cards = gameService.cards;
 

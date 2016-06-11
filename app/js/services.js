@@ -52,7 +52,7 @@ angular.module("app")
             isStart = false;
             $rootScope.$broadcast('isShowBlackMate', true);
             $rootScope.$broadcast('updateGameTime', (gameTime / 1000).toFixed(1));
-            if (gameTime < 8400) {
+            if (gameTime < 5000) {
                 $("#finish_cheat").css('opacity', 1).css('z-index', 15);
             } else {
                 $("#finish").css('opacity', 1).css('z-index', 15);
@@ -131,7 +131,7 @@ angular.module("app")
                 if (isMatchPattern()) {
                     $(".card-flipped").addClass("card-removed").removeClass("card-flipped");
                     if ($(".card-removed").length == this.cards.length) {
-                        this.isStart = false;
+                        isStart = false;
                         $interval.cancel(this.gameTimeInterval);
                         this.gameTimeInterval = null;
                         gameOver();
@@ -140,7 +140,7 @@ angular.module("app")
                     $(".card-flipped").addClass("card-flipped-error");
                     setTimeout(function () {
                         $(".card-flipped").removeClass("card-flipped").removeClass("card-flipped-error");
-                    }, 1500);
+                    }, 700);
                 }
             },
             submit: function (username, phone) {
