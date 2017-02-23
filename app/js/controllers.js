@@ -45,91 +45,51 @@ angular.module("app")
             };
 
             $scope.startGame = {
-                width: 271 * pageInfo.rate + "px",
-                height: 91 * pageInfo.rate + "px",
-                margin: 697 * pageInfo.rate + "px auto 0"
+                width: 192 * pageInfo.rate + "px",
+                margin: 655 * pageInfo.rate + "px " + 232 * pageInfo.rate + "px 0"
             };
 
             $scope.rules = {
-                width: 179 * pageInfo.rate + "px",
-                height: 74 * pageInfo.rate + "px",
-                marginTop: 12 * pageInfo.rate + "px",
-                marginLeft: 36 * pageInfo.rate + "px"
+                width: 118 * pageInfo.rate + "px",
+                marginTop: 26 * pageInfo.rate + "px",
+                marginLeft: 129 * pageInfo.rate + "px"
             };
 
             $scope.prize = {
-                width: 179 * pageInfo.rate + "px",
-                height: 74 * pageInfo.rate + "px",
-                marginTop: 12 * pageInfo.rate + "px",
+                width: 140 * pageInfo.rate + "px",
+                marginTop: 26 * pageInfo.rate + "px",
                 marginLeft: 15 * pageInfo.rate + "px"
             };
 
             $scope.ranking = {
-                width: 179 * pageInfo.rate + "px",
-                height: 74 * pageInfo.rate + "px",
-                marginTop: 12 * pageInfo.rate + "px",
+                width: 118 * pageInfo.rate + "px",
+                marginTop: 26 * pageInfo.rate + "px",
                 marginLeft: 15 * pageInfo.rate + "px"
             };
-
-            $scope.notice = {
-                width: 360 * pageInfo.rate + "px",
-                height: 80 * pageInfo.rate + "px",
-                lineHeight: 40 * pageInfo.rate + "px",
-                fontSize: 24 * pageInfo.rate + "px",
-                margin: 105 * pageInfo.rate + "px auto 0"
-            };
-
 
             $scope.detail = {
                 width: pageInfo.width + "px",
                 height: 720 * pageInfo.rate + "px",
-                top: 190 * pageInfo.rate + "px"
-            };
-
-            $scope.prizeDetail = {
-                width: pageInfo.width + "px",
-                height: 713 * pageInfo.rate + "px"
-            };
-
-            $scope.prizeClose = {
-                width: 51 * pageInfo.rate + "px",
-                height: 51 * pageInfo.rate + "px",
-                top: 30 * pageInfo.rate + "px",
-                right: 18 * pageInfo.rate + "px"
-
+                top: 137 * pageInfo.rate + "px"
             };
 
             $scope.rulesDetail = {
-                width: 618 * pageInfo.rate + "px",
-                height: 696 * pageInfo.rate + "px",
-                left: 11 * pageInfo.rate + "px"
+                width: 590 * pageInfo.rate + "px",
+                top: 17 * pageInfo.rate + "px",
+                left: 10 * pageInfo.rate + "px"
             };
 
             $scope.rulesClose = {
-                width: 54 * pageInfo.rate + "px",
-                height: 60 * pageInfo.rate + "px",
-                right: 13 * pageInfo.rate + "px",
-                top: 21 * pageInfo.rate + "px"
-            };
-
-            $scope.rankingDetail = {
-                width: 618 * pageInfo.rate + "px",
-                height: 696 * pageInfo.rate + "px",
-                left: 11 * pageInfo.rate + "px"
-            };
-
-            $scope.rankingClose = {
-                width: 51 * pageInfo.rate + "px",
-                height: 51 * pageInfo.rate + "px",
-                right: 17 * pageInfo.rate + "px",
-                top: 31 * pageInfo.rate + "px"
+                width: 52 * pageInfo.rate + "px",
+                right: 38 * pageInfo.rate + "px",
+                top: 44 * pageInfo.rate + "px"
             };
 
             $scope.rulesContent = {
-                width: 580 * pageInfo.rate + "px",
-                height: 560 * pageInfo.rate + "px",
-                left: 40 * pageInfo.rate + "px",
-                top: 110 * pageInfo.rate + "px"
+                width: 500 * pageInfo.rate + "px",
+                height: 518 * pageInfo.rate + "px",
+                left: 70 * pageInfo.rate + "px",
+                top: 127 * pageInfo.rate + "px"
             };
 
             $scope.rulesContentImg = {
@@ -137,12 +97,38 @@ angular.module("app")
             };
 
 
+            $scope.prizeDetail = {
+                width: 560 * pageInfo.rate + "px",
+                top: 0,
+                left: 40 * pageInfo.rate + "px"
+            };
+
+            $scope.prizeClose = {
+                width: 52 * pageInfo.rate + "px",
+                right: 38 * pageInfo.rate + "px",
+                top: 43 * pageInfo.rate + "px"
+            };
+
+
+            $scope.rankingDetail = {
+                width: 560 * pageInfo.rate + "px",
+                top: -49 * pageInfo.rate + "px",
+                left: 40 * pageInfo.rate + "px"
+            };
+
+            $scope.rankingClose = {
+                width: 52 * pageInfo.rate + "px",
+                right: 38 * pageInfo.rate + "px",
+                top: 43 * pageInfo.rate + "px"
+            };
+
+
             $scope.rankingContent = {
                 width: 480 * pageInfo.rate + "px",
-                height: 560 * pageInfo.rate + "px",
+                height: 530 * pageInfo.rate + "px",
                 left: 90 * pageInfo.rate + "px",
                 top: 110 * pageInfo.rate + "px",
-                fontSize: 24 * pageInfo.rate + "px"
+                fontSize: 20 * pageInfo.rate + "px"
             };
 
 
@@ -255,166 +241,116 @@ angular.module("app")
                 $scope.rankingList = data.result;
         });
 
-
         NProgress.done();
     }])
     .controller('gameCtrl', ['$scope', '$state', '$timeout', '$log', 'pageInfo', 'gameService', function ($scope, $state, $timeout, $log, pageInfo, gameService) {
         $scope.pageClass = 'pageGame';
         function autoCss() {
-            $scope.game_bg = {
-                width: 600 * pageInfo.rate + "px",
-                height: 600 * pageInfo.rate + "px",
-                top: 230 * pageInfo.rate + "px",
-                left: 20 * pageInfo.rate + "px"
-            };
-
             $scope.gameDiv = {
-                width: 580 * pageInfo.rate + "px",
-                height: 560 * pageInfo.rate + "px",
-                top: 242 * pageInfo.rate + "px",
-                left: 30 * pageInfo.rate + "px"
-            };
-
-            $scope.feiren = {
-                width: 155 * pageInfo.rate + "px",
-                height: 132 * pageInfo.rate + "px",
-                top: 822 * pageInfo.rate + "px",
-                left: 120 * pageInfo.rate + "px"
+                width: 570 * pageInfo.rate + "px",
+                height: 570 * pageInfo.rate + "px",
+                top: 260 * pageInfo.rate + "px",
+                left: 36 * pageInfo.rate + "px"
             };
 
             $scope.home = {
                 width: 179 * pageInfo.rate + "px",
                 height: 74 * pageInfo.rate + "px",
-                top: 913 * pageInfo.rate + "px",
+                top: 895 * pageInfo.rate + "px",
                 left: 130 * pageInfo.rate + "px"
             };
 
             $scope.start = {
                 width: 179 * pageInfo.rate + "px",
                 height: 74 * pageInfo.rate + "px",
-                top: 913 * pageInfo.rate + "px",
+                top: 895 * pageInfo.rate + "px",
                 left: 338 * pageInfo.rate + "px"
             };
 
             $scope.card = {
-                width: 126 * pageInfo.rate + "px",
-                height: 66 * pageInfo.rate + "px",
-                marginTop: 20 * pageInfo.rate + "px",
-                marginLeft: 12 * pageInfo.rate + "px"
+                width: 120 * pageInfo.rate + "px",
+                height: 120 * pageInfo.rate + "px",
+                margin: 9 * pageInfo.rate + "px " + 9 * pageInfo.rate + "px"
             };
 
             $scope.face = {
-                width: 126 * pageInfo.rate + "px",
-                height: 66 * pageInfo.rate + "px"
+                width: 120 * pageInfo.rate + "px",
+                height: 120 * pageInfo.rate + "px"
             };
 
             $scope.rememberTime = {
-                width: 580 * pageInfo.rate + "px",
+                width: 75 * pageInfo.rate + "px",
                 height: 28 * pageInfo.rate + "px",
-                top: 802 * pageInfo.rate + "px",
-                left: 30 * pageInfo.rate + "px"
+                top: 841 * pageInfo.rate + "px",
+                left: 294 * pageInfo.rate + "px"
             };
 
             $scope.rememberTimeNum = {
-                width: 70 * pageInfo.rate + "px",
-                height: 20 * pageInfo.rate + "px",
-                lineHeight: 20 * pageInfo.rate + "px",
-                borderRadius: 10 * pageInfo.rate + "px",
-                border: 1 * pageInfo.rate + "px solid #E98E10",
-                fontSize: 14 * pageInfo.rate + "px",
-                top: 2 * pageInfo.rate + "px",
-                left: 10 * pageInfo.rate + "px"
+                width: 75 * pageInfo.rate + "px",
+                height: 28 * pageInfo.rate + "px",
+                lineHeight: 28 * pageInfo.rate + "px",
+                fontSize: 14 * pageInfo.rate + "px"
             };
 
 
             $scope.gameRecordTime = {
-                width: 580 * pageInfo.rate + "px",
+                width: 75 * pageInfo.rate + "px",
                 height: 28 * pageInfo.rate + "px",
-                top: 802 * pageInfo.rate + "px",
-                left: 30 * pageInfo.rate + "px"
+                top: 841 * pageInfo.rate + "px",
+                left: 294 * pageInfo.rate + "px"
             };
-
-
-            $scope.gameRecordTimeStr = {
-                width: 90 * pageInfo.rate + "px",
-                height: 20 * pageInfo.rate + "px",
-                lineHeight: 20 * pageInfo.rate + "px",
-                borderRadius: 10 * pageInfo.rate + "px",
-                border: 1 * pageInfo.rate + "px solid #E98E10",
-                fontSize: 12 * pageInfo.rate + "px",
-                top: 2 * pageInfo.rate + "px",
-                left: 10 * pageInfo.rate + "px"
-            };
-
 
             $scope.gameRecordTimeNum = {
-                width: 120 * pageInfo.rate + "px",
-                height: 20 * pageInfo.rate + "px",
-                lineHeight: 20 * pageInfo.rate + "px",
-                borderRadius: 10 * pageInfo.rate + "px",
-                border: 1 * pageInfo.rate + "px solid #E98E10",
-                fontSize: 14 * pageInfo.rate + "px",
-                top: 2 * pageInfo.rate + "px",
-                left: 110 * pageInfo.rate + "px",
-                letterSpacing: 3 * pageInfo.rate + "px"
+                width: 75 * pageInfo.rate + "px",
+                height: 28 * pageInfo.rate + "px",
+                lineHeight: 28 * pageInfo.rate + "px",
+                fontSize: 14 * pageInfo.rate + "px"
             };
-
-            $scope.gameRecordTimeStrMiao = {
-                width: 40 * pageInfo.rate + "px",
-                height: 20 * pageInfo.rate + "px",
-                lineHeight: 20 * pageInfo.rate + "px",
-                borderRadius: 10 * pageInfo.rate + "px",
-                border: 1 * pageInfo.rate + "px solid #E98E10",
-                fontSize: 12 * pageInfo.rate + "px",
-                top: 2 * pageInfo.rate + "px",
-                left: 225 * pageInfo.rate + "px",
-            };
-
 
             $scope.finish = {
-                width: 477 * pageInfo.rate + "px",
-                height: 768 * pageInfo.rate + "px",
-                top: 25 * pageInfo.rate + "px",
-                left: 82 * pageInfo.rate + "px"
+                width: 640 * pageInfo.rate + "px",
+                height: 814 * pageInfo.rate + "px",
+                top: 25 * pageInfo.rate + "px"
             };
 
 
             $scope.finish_close = {
-                width: 67 * pageInfo.rate + "px",
-                height: 67 * pageInfo.rate + "px",
-                top: 140 * pageInfo.rate + "px",
-                right: -20 * pageInfo.rate + "px"
+                width: 52 * pageInfo.rate + "px",
+                right: 38 * pageInfo.rate + "px",
+                top: 178 * pageInfo.rate + "px"
             };
 
             $scope.finish_main = {
                 width: 448 * pageInfo.rate + "px",
                 height: 576 * pageInfo.rate + "px",
                 top: 176 * pageInfo.rate + "px",
-                left: 14 * pageInfo.rate + "px"
+                left: 96 * pageInfo.rate + "px"
             };
 
             $scope.finish_title = {
                 width: 448 * pageInfo.rate + "px",
-                height: 80 * pageInfo.rate + "px",
-                lineHeight: 80 * pageInfo.rate + "px",
-                fontSize: 60 * pageInfo.rate + "px",
-                marginTop: 50 * pageInfo.rate + "px"
+                height: 140 * pageInfo.rate + "px",
+                lineHeight: 140 * pageInfo.rate + "px",
+                fontSize: 110 * pageInfo.rate + "px",
+                marginTop: 63 * pageInfo.rate + "px"
             };
 
             $scope.finish_time = {
                 width: 448 * pageInfo.rate + "px",
-                height: 45 * pageInfo.rate + "px",
-                lineHeight: 45 * pageInfo.rate + "px",
+                height: 127 * pageInfo.rate + "px",
+                lineHeight: 127 * pageInfo.rate + "px",
                 fontSize: 34 * pageInfo.rate + "px",
-                marginTop: 40 * pageInfo.rate + "px",
-                letterSpacing: 10 * pageInfo.rate + "px"
+                marginTop: 15 * pageInfo.rate + "px",
+                marginBottom: 20 * pageInfo.rate + "px",
+                letterSpacing: 10 * pageInfo.rate + "px",
+                color: "#0CBABE"
             };
 
             $scope.finish_input_div = {
                 width: 400 * pageInfo.rate + "px",
                 height: 60 * pageInfo.rate + "px",
-                marginTop: 40 * pageInfo.rate + "px",
-                marginLeft: 16 * pageInfo.rate + "px",
+                marginTop: 15 * pageInfo.rate + "px",
+                marginLeft: 20 * pageInfo.rate + "px",
                 border: 4 * pageInfo.rate + "px solid transparent"
             };
 
@@ -428,18 +364,8 @@ angular.module("app")
             };
 
             $scope.finish_submit = {
-                width: 271 * pageInfo.rate + "px",
-                height: 87 * pageInfo.rate + "px",
-                margin: 60 * pageInfo.rate + "px auto 0"
-            };
-
-
-            $scope.finish_cheat_title = {
-                width: 448 * pageInfo.rate + "px",
-                height: 45 * pageInfo.rate + "px",
-                lineHeight: 45 * pageInfo.rate + "px",
-                fontSize: 40 * pageInfo.rate + "px",
-                marginTop: 30 * pageInfo.rate + "px"
+                width: 176 * pageInfo.rate + "px",
+                margin: 10 * pageInfo.rate + "px auto 0"
             };
 
             $scope.finish_cheat_time = {
@@ -447,9 +373,14 @@ angular.module("app")
                 height: 45 * pageInfo.rate + "px",
                 lineHeight: 45 * pageInfo.rate + "px",
                 fontSize: 40 * pageInfo.rate + "px",
-                marginTop: 120 * pageInfo.rate + "px",
-                marginBottom: 60 * pageInfo.rate + "px",
-                letterSpacing: 10 * pageInfo.rate + "px"
+                marginTop: 260 * pageInfo.rate + "px",
+                letterSpacing: 10 * pageInfo.rate + "px",
+                color: "#FE0C00"
+            };
+
+            $scope.finish_cheat_submit = {
+                width: 176 * pageInfo.rate + "px",
+                margin: 208 * pageInfo.rate + "px auto 0"
             };
 
             $timeout(function () {

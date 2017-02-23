@@ -9,15 +9,15 @@ angular.module("app")
                 var pageWidth = $(window).width(), pageHeight = $(window).height(), pageRate = 1;
                 if (pageWidth < 640) {
                     pageWidth = 640;
-                    pageHeight = 1008;
+                    pageHeight = 996;
                     pageRate = 1;
                 } else {
                     pageRate = pageWidth / 640;
                     if (pageWidth > pageHeight) {
-                        pageHeight = pageRate * 1008;
+                        pageHeight = pageRate * 996;
                     } else {
-                        if (pageHeight < pageRate * 1008) {
-                            pageHeight = pageRate * 1008;
+                        if (pageHeight < pageRate * 996) {
+                            pageHeight = pageRate * 996;
                         }
                     }
                 }
@@ -72,17 +72,16 @@ angular.module("app")
             isOver: getIsOver,
             rememberInterval: null,
             gameTimeInterval: null,
-            country: [
-                'England', 'Italy', 'Hungary', 'Spain', 'Ukraine', 'Welsh',
-                'Turkey', 'Slovakia', 'Switzerland', 'Sweden', 'Portugal', 'Romania',
-                'Croatia', 'France', 'Russia', 'Germany', 'Poland', 'Iceland',
-                'Belgium', 'NorthernIreland', 'Austria', 'Ireland', 'Albania', 'Czech'
+            flags: [
+                'A', 'B', 'C', 'D', 'E', 'F',
+                'G', 'H', 'I', 'J', 'K', 'L',
+                'M', 'N', 'O', 'P'
             ],
             cards: [],
             init: function init() {
                 getStartTime();
-                this.country.sort(shuffle);
-                var c = this.country.slice(0, 12);
+                this.flags.sort(shuffle);
+                var c = this.flags.slice(0, 8);
                 c = c.concat(c);
                 var i = 0;
                 while (i < 3) {
